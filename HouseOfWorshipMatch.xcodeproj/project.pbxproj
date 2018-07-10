@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353CC56D20F4BB730006F053 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56C20F4BB730006F053 /* Card.swift */; };
+		353CC56F20F4D0C90006F053 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56E20F4D0C90006F053 /* BoardViewModel.swift */; };
 		35FBECC920F42BCC001C109D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECC820F42BCC001C109D /* AppDelegate.swift */; };
 		35FBECD020F42BCE001C109D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECCF20F42BCE001C109D /* Assets.xcassets */; };
 		35FBECD320F42BCE001C109D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECD120F42BCE001C109D /* LaunchScreen.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		353CC56C20F4BB730006F053 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		353CC56E20F4D0C90006F053 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		35FBECC520F42BCC001C109D /* HouseOfWorshipMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseOfWorshipMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FBECC820F42BCC001C109D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35FBECCF20F42BCE001C109D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		353CC56B20F4BB4F0006F053 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				353CC56C20F4BB730006F053 /* Card.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		35FBECBC20F42BCC001C109D = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +112,7 @@
 		35FBECC720F42BCC001C109D /* HouseOfWorshipMatch */ = {
 			isa = PBXGroup;
 			children = (
+				353CC56B20F4BB4F0006F053 /* Views */,
 				35FBECF720F434EC001C109D /* ViewControllers */,
 				35FBECF620F434DD001C109D /* ViewModels */,
 				35FBECC820F42BCC001C109D /* AppDelegate.swift */,
@@ -131,6 +144,7 @@
 		35FBECF620F434DD001C109D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				353CC56E20F4D0C90006F053 /* BoardViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -278,6 +292,8 @@
 				35FBECC920F42BCC001C109D /* AppDelegate.swift in Sources */,
 				35FBECF920F44416001C109D /* MainMenuViewController.swift in Sources */,
 				35FBECFD20F4A299001C109D /* BoardViewController.swift in Sources */,
+				353CC56D20F4BB730006F053 /* Card.swift in Sources */,
+				353CC56F20F4D0C90006F053 /* BoardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
