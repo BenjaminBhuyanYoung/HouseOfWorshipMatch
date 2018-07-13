@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		353CC56D20F4BB730006F053 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56C20F4BB730006F053 /* Card.swift */; };
 		353CC56F20F4D0C90006F053 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56E20F4D0C90006F053 /* BoardViewModel.swift */; };
+		353CC57120F852C60006F053 /* BoardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */; };
 		35FBECC920F42BCC001C109D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECC820F42BCC001C109D /* AppDelegate.swift */; };
 		35FBECD020F42BCE001C109D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECCF20F42BCE001C109D /* Assets.xcassets */; };
 		35FBECD320F42BCE001C109D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECD120F42BCE001C109D /* LaunchScreen.storyboard */; };
-		35FBECDE20F42BCE001C109D /* HouseOfWorshipMatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECDD20F42BCE001C109D /* HouseOfWorshipMatchTests.swift */; };
+		35FBECDE20F42BCE001C109D /* CardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECDD20F42BCE001C109D /* CardTests.swift */; };
 		35FBECE920F42BCE001C109D /* HouseOfWorshipMatchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECE820F42BCE001C109D /* HouseOfWorshipMatchUITests.swift */; };
 		35FBECF920F44416001C109D /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECF820F44416001C109D /* MainMenuViewController.swift */; };
-		35FBECFB20F45298001C109D /* IDETemplateMacros.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECFA20F45298001C109D /* IDETemplateMacros.plist */; };
 		35FBECFD20F4A299001C109D /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECFC20F4A299001C109D /* BoardViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,19 +39,20 @@
 /* Begin PBXFileReference section */
 		353CC56C20F4BB730006F053 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		353CC56E20F4D0C90006F053 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModelProtocol.swift; sourceTree = "<group>"; };
+		353CC57220F852F70006F053 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = HouseOfWorshipMatch.xcodeproj/project.xcworkspace/xcshareddata/IDETemplateMacros.plist; sourceTree = "<group>"; };
 		35FBECC520F42BCC001C109D /* HouseOfWorshipMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseOfWorshipMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FBECC820F42BCC001C109D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35FBECCF20F42BCE001C109D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35FBECD220F42BCE001C109D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35FBECD420F42BCE001C109D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35FBECD920F42BCE001C109D /* HouseOfWorshipMatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseOfWorshipMatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		35FBECDD20F42BCE001C109D /* HouseOfWorshipMatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseOfWorshipMatchTests.swift; sourceTree = "<group>"; };
+		35FBECDD20F42BCE001C109D /* CardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTests.swift; sourceTree = "<group>"; };
 		35FBECDF20F42BCE001C109D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35FBECE420F42BCE001C109D /* HouseOfWorshipMatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HouseOfWorshipMatchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FBECE820F42BCE001C109D /* HouseOfWorshipMatchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseOfWorshipMatchUITests.swift; sourceTree = "<group>"; };
 		35FBECEA20F42BCE001C109D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35FBECF820F44416001C109D /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
-		35FBECFA20F45298001C109D /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IDETemplateMacros.plist; sourceTree = "<group>"; };
 		35FBECFC20F4A299001C109D /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,8 +95,8 @@
 				35FBECC720F42BCC001C109D /* HouseOfWorshipMatch */,
 				35FBECDC20F42BCE001C109D /* HouseOfWorshipMatchTests */,
 				35FBECE720F42BCE001C109D /* HouseOfWorshipMatchUITests */,
-				35FBECFA20F45298001C109D /* IDETemplateMacros.plist */,
 				35FBECC620F42BCC001C109D /* Products */,
+				353CC57220F852F70006F053 /* IDETemplateMacros.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,7 +127,7 @@
 		35FBECDC20F42BCE001C109D /* HouseOfWorshipMatchTests */ = {
 			isa = PBXGroup;
 			children = (
-				35FBECDD20F42BCE001C109D /* HouseOfWorshipMatchTests.swift */,
+				35FBECDD20F42BCE001C109D /* CardTests.swift */,
 				35FBECDF20F42BCE001C109D /* Info.plist */,
 			);
 			path = HouseOfWorshipMatchTests;
@@ -145,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				353CC56E20F4D0C90006F053 /* BoardViewModel.swift */,
+				353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -263,7 +265,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FBECD320F42BCE001C109D /* LaunchScreen.storyboard in Resources */,
-				35FBECFB20F45298001C109D /* IDETemplateMacros.plist in Resources */,
 				35FBECD020F42BCE001C109D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FBECC920F42BCC001C109D /* AppDelegate.swift in Sources */,
+				353CC57120F852C60006F053 /* BoardViewModelProtocol.swift in Sources */,
 				35FBECF920F44416001C109D /* MainMenuViewController.swift in Sources */,
 				35FBECFD20F4A299001C109D /* BoardViewController.swift in Sources */,
 				353CC56D20F4BB730006F053 /* Card.swift in Sources */,
@@ -301,7 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35FBECDE20F42BCE001C109D /* HouseOfWorshipMatchTests.swift in Sources */,
+				35FBECDE20F42BCE001C109D /* CardTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

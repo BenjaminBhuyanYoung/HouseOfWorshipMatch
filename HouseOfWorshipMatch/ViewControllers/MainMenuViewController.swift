@@ -51,13 +51,14 @@ class MainMenuViewController: UIViewController {
     }
 
     @objc func tappedPlay(_ sender: UIGestureRecognizer) {
-        let boardViewController = BoardViewController()
-        
         guard let appDelegate: AppDelegate = (UIApplication.shared.delegate as? AppDelegate),
          let window = appDelegate.window else {
             debugPrint("tappedPlay: Error, no App Delegate or window.")
             return
         }
+        let boardViewController = BoardViewController()
+        boardViewController.viewModel = BoardViewModel()
+
         window.rootViewController = boardViewController
         
 //        self.navigationController.pushViewController(boardViewController, animated: true)

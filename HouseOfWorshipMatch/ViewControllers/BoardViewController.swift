@@ -8,7 +8,9 @@ class BoardViewController: UIViewController {
     private var cardsBoard = UIView()
     private var selectedBoard = UIView()
     private var quit = UIButton()
-    
+
+    public var viewModel: BoardViewModelProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

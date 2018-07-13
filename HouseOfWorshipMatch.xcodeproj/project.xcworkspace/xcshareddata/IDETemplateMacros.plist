@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>FILEHEADER</key>
-	<string>Created by Benjamin Bhuyan Young</string>
+	<string>Created by Benjamin Bhuyan Young on __DATE__</string>
 </dict>
 </plist>

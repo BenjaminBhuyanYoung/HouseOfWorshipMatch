@@ -3,6 +3,6 @@
 
 import Foundation
 
-class BoardViewModel {
+class BoardViewModel: BoardViewModelProtocol {
     
 }
