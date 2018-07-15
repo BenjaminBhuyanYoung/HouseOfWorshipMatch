@@ -6,8 +6,8 @@ import XCTest
 
 class CardTests: XCTestCase {
 
-    func testExample() {
-        let card = Card(location: .india, cardBack: .leaves)
+    func testFactsCycle() {
+        let card = Card(location: .india, type: .image, cardBack: .leaves, size: .small)
 
         let fact1 = card.getFact()
         let fact2 = card.getFact()
@@ -19,6 +19,5 @@ class CardTests: XCTestCase {
         XCTAssertNotEqual(fact1, fact3)
         XCTAssertEqual(fact1, fact1Again)
     }
-    
 
 }

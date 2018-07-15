@@ -11,6 +11,11 @@
 		353CC56F20F4D0C90006F053 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56E20F4D0C90006F053 /* BoardViewModel.swift */; };
 		353CC57120F852C60006F053 /* BoardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */; };
 		353CC57420FB73740006F053 /* CardHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57320FB73740006F053 /* CardHandlerProtocol.swift */; };
+		353CC57620FB757A0006F053 /* BoardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57520FB757A0006F053 /* BoardViewModelTests.swift */; };
+		353CC57720FB76280006F053 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56E20F4D0C90006F053 /* BoardViewModel.swift */; };
+		353CC57820FB768D0006F053 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56C20F4BB730006F053 /* Card.swift */; };
+		353CC57920FB76EB0006F053 /* BoardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */; };
+		353CC57A20FB76EF0006F053 /* CardHandlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57320FB73740006F053 /* CardHandlerProtocol.swift */; };
 		35FBECC920F42BCC001C109D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FBECC820F42BCC001C109D /* AppDelegate.swift */; };
 		35FBECD020F42BCE001C109D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECCF20F42BCE001C109D /* Assets.xcassets */; };
 		35FBECD320F42BCE001C109D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35FBECD120F42BCE001C109D /* LaunchScreen.storyboard */; };
@@ -43,6 +48,7 @@
 		353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModelProtocol.swift; sourceTree = "<group>"; };
 		353CC57220F852F70006F053 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = IDETemplateMacros.plist; path = HouseOfWorshipMatch.xcodeproj/project.xcworkspace/xcshareddata/IDETemplateMacros.plist; sourceTree = "<group>"; };
 		353CC57320FB73740006F053 /* CardHandlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHandlerProtocol.swift; sourceTree = "<group>"; };
+		353CC57520FB757A0006F053 /* BoardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModelTests.swift; sourceTree = "<group>"; };
 		35FBECC520F42BCC001C109D /* HouseOfWorshipMatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HouseOfWorshipMatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35FBECC820F42BCC001C109D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35FBECCF20F42BCE001C109D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +137,7 @@
 			children = (
 				35FBECDD20F42BCE001C109D /* CardTests.swift */,
 				35FBECDF20F42BCE001C109D /* Info.plist */,
+				353CC57520FB757A0006F053 /* BoardViewModelTests.swift */,
 			);
 			path = HouseOfWorshipMatchTests;
 			sourceTree = "<group>";
@@ -307,7 +314,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				353CC57A20FB76EF0006F053 /* CardHandlerProtocol.swift in Sources */,
 				35FBECDE20F42BCE001C109D /* CardTests.swift in Sources */,
+				353CC57920FB76EB0006F053 /* BoardViewModelProtocol.swift in Sources */,
+				353CC57620FB757A0006F053 /* BoardViewModelTests.swift in Sources */,
+				353CC57720FB76280006F053 /* BoardViewModel.swift in Sources */,
+				353CC57820FB768D0006F053 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
