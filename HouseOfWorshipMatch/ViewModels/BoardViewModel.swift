@@ -9,6 +9,8 @@ public enum Level: Int {
 
 class BoardViewModel {
 
+    public var cards = [Card]()
+
     public init(for level: Level) {
 
         switch level {
@@ -20,10 +22,26 @@ class BoardViewModel {
     }
 
     private func createCards(faceUp: Bool) {
+        assert(cards.count == 0)
 
+        for location in Location.all {
+            let pictureCard = Card(location: location, type: .image, cardBack: .star, size: .small)
+            let textCard = Card(location: location, type: .text, cardBack: .star, size: .small)
+            pictureCard.delegate = self
+            textCard.delegate = self
+
+            cards.append(pictureCard)
+            cards.append(textCard)
+        }
     }
 }
 
 extension BoardViewModel: BoardViewModelProtocol {
 
+}
+
+extension BoardViewModel: CardHandlerProtocol {
+    func cardClicked(card: Card) {
+        debugPrint("Card \(card.location) clicked.")
+    }
 }
