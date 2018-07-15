@@ -7,7 +7,7 @@ import XCTest
 class CardTests: XCTestCase {
 
     func testFactsCycle() {
-        let card = Card(location: .india, type: .image, cardBack: .leaves, size: .small)
+        let card = Card(location: .uganda, type: .image, cardBack: .leaves, size: .small)
 
         let fact1 = card.getFact()
         let fact2 = card.getFact()
@@ -18,6 +18,22 @@ class CardTests: XCTestCase {
         XCTAssertNotEqual(fact2, fact3)
         XCTAssertNotEqual(fact1, fact3)
         XCTAssertEqual(fact1, fact1Again)
+    }
+
+    func testFactsEndWithNumbering() {
+        let card = Card(location: .germany, type: .image, cardBack: .leaves, size: .small)
+
+        let fact1 = card.getFact()
+        let fact2 = card.getFact()
+        let fact1Again = card.getFact()
+
+        let fact1Last9Characters = fact1.suffix(9)
+        let fact2Last9Characters = fact2.suffix(9)
+        let fact1AgainLast9Characters = fact1Again.suffix(9)
+
+        XCTAssertEqual(fact1Last9Characters, " [1 of 2]")
+        XCTAssertEqual(fact2Last9Characters, " [2 of 2]")
+        XCTAssertEqual(fact1AgainLast9Characters, " [1 of 2]")
     }
 
 }
