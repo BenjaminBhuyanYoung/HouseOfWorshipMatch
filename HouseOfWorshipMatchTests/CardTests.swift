@@ -7,7 +7,7 @@ import XCTest
 class CardTests: XCTestCase {
 
     func testExample() {
-        let card = Card(type: .india, cardBack: .leaves)
+        let card = Card(location: .india, cardBack: .leaves)
 
         let fact1 = card.getFact()
         let fact2 = card.getFact()

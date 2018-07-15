@@ -2,6 +2,6 @@
 
 import Foundation
 
-class BoardViewModelProtocol {
+protocol BoardViewModelProtocol {
     
 }

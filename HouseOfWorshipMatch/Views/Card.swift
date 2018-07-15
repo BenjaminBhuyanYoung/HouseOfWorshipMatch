@@ -20,6 +20,10 @@ public enum CardFront: String {
     turkmenistan = "Ashkabad__Turmenistan",
     uganda = "Kampala__Uganda",
     usa = "Wilmette__USA"
+
+    var all:[CardFront] {
+        return [.australia, .germany, .india, .israel, .panama, .samoa, .turkmenistan, .uganda, .usa]
+    }
 }
 
 private var CardFact: [CardFront: [String]] = [
@@ -58,20 +62,23 @@ private var CardFact: [CardFront: [String]] = [
 ]
 
 class Card: UIView {
-    let type: CardFront
+    let location: CardFront
     let front: UIImageView
     let back: UIImageView
 
     private var faceUp = true
     private var factCounter = 0
 
+    // no... cardHandlerProtocol or something.  BoardViewModel can extend.
+//    public var delegate: BoardViewModelProtocol?
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(type: CardFront, cardBack: CardBack) {
-        self.type = type
-        let frontImage = UIImage(named: type.rawValue)
+    init(location: CardFront, cardBack: CardBack) {
+        self.location = location
+        let frontImage = UIImage(named: location.rawValue)
         let backImage = UIImage(named: cardBack.rawValue)
         
         self.front = UIImageView(image: frontImage)
@@ -96,8 +103,8 @@ class Card: UIView {
     }
 
     public func getFact() -> String {
-        guard var facts = CardFact[type] else {
-            debugPrint("Error, missing fact for \(type)")
+        guard var facts = CardFact[location] else {
+            debugPrint("Error, missing fact for \(location)")
             return ""
         }
 

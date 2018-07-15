@@ -57,7 +57,7 @@ class MainMenuViewController: UIViewController {
             return
         }
         let boardViewController = BoardViewController()
-        boardViewController.viewModel = BoardViewModel()
+        boardViewController.viewModel = BoardViewModel(for: Level.tutorial)
 
         window.rootViewController = boardViewController
         
