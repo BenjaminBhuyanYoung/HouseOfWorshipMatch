@@ -2,6 +2,7 @@
 //  Copyright © 2018 The Raven Games. All rights reserved.
 
 import Foundation
+import GameKit
 
 public enum Level: Int {
     case tutorial, normal
@@ -9,7 +10,7 @@ public enum Level: Int {
 
 class BoardViewModel {
 
-    public var cards = [Card]()
+    private var cards = [Card]()
 
     public init(for level: Level) {
 
@@ -19,6 +20,7 @@ class BoardViewModel {
         case .normal:
             createCards(faceUp: false)
         }
+        shuffleCards()
     }
 
     private func createCards(faceUp: Bool) {
@@ -34,14 +36,23 @@ class BoardViewModel {
             cards.append(textCard)
         }
     }
+
+    private func shuffleCards() {
+        //        cards.shuffle()   TODO: Swift 4.2
+        let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: cards)
+        cards = shuffled as! [Card]
+    }
+
 }
 
 extension BoardViewModel: BoardViewModelProtocol {
-
+    public func getCards() -> [Card] {
+        return cards
+    }
 }
 
 extension BoardViewModel: CardHandlerProtocol {
-    func cardClicked(card: Card) {
+    func cardTapped(card: Card) {
         debugPrint("Card \(card.location) clicked.")
     }
 }

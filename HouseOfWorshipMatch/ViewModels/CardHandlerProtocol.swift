@@ -3,5 +3,5 @@
 import Foundation
 
 protocol CardHandlerProtocol {
-    func cardClicked(card: Card)
+    func cardTapped(card: Card)
 }

@@ -98,29 +98,38 @@ class Card: UIView {
         var cardFrame: CGRect
         switch size {
         case .small:
-            cardFrame = CGRect(x: 0, y: 0, width: 50, height: 75)
+            cardFrame = CGRect(x: 0, y: 0, width: 2, height: 3)
         case .medium:
-            cardFrame = CGRect(x: 0, y: 0, width: 80, height: 120)
+            cardFrame = CGRect(x: 0, y: 0, width: 16, height: 24)
         case .large:
-            cardFrame = CGRect(x: 0, y: 0, width: 130, height: 195)
+            cardFrame = CGRect(x: 0, y: 0, width: 30, height: 45)
         }
 
         super.init(frame: cardFrame)
 
+        translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: cardFrame.width),
+            heightAnchor.constraint(equalToConstant: cardFrame.height)
+            ])
+
         addSubview(front)
 
-        let gesture = UITapGestureRecognizer(target: self, action: #selector (flip(_:)))
+        let gesture = UITapGestureRecognizer(target: self, action: #selector (tap(_:)))
         addGestureRecognizer(gesture)
     }
 
-    @objc func flip(_ sender: UIGestureRecognizer) {
+    private func flip() {
         let toView = faceUp ? back : front
         let fromView = faceUp ? front : back
         UIView.transition(from: fromView, to: toView, duration: 0.7, options: .transitionFlipFromRight, completion: nil)
         toView.translatesAutoresizingMaskIntoConstraints = false
         faceUp = !faceUp
+    }
 
-        delegate?.cardClicked(card: self)
+    @objc func tap(_ sender: UIGestureRecognizer?) {
+        flip()
+        delegate?.cardTapped(card: self)
     }
 
     public func getFact() -> String {

@@ -135,9 +135,9 @@
 		35FBECDC20F42BCE001C109D /* HouseOfWorshipMatchTests */ = {
 			isa = PBXGroup;
 			children = (
+				353CC57520FB757A0006F053 /* BoardViewModelTests.swift */,
 				35FBECDD20F42BCE001C109D /* CardTests.swift */,
 				35FBECDF20F42BCE001C109D /* Info.plist */,
-				353CC57520FB757A0006F053 /* BoardViewModelTests.swift */,
 			);
 			path = HouseOfWorshipMatchTests;
 			sourceTree = "<group>";

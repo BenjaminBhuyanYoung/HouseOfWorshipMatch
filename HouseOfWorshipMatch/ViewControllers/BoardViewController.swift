@@ -16,6 +16,7 @@ class BoardViewController: UIViewController {
 
         addBackground()
         addBoards()
+        addCards()
         addQuitButton()
     }
 
@@ -38,8 +39,7 @@ class BoardViewController: UIViewController {
     
     private func addBoards() {
         for board in [cardsBoard, selectedBoard] {
-            board.backgroundColor = UIColor.lightGray
-            board.alpha = 0.25
+            board.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
             board.layer.cornerRadius = 4.0
             
             board.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,37 @@ class BoardViewController: UIViewController {
             cardsBoard.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
     }
-    
+
+    private func addCards() {
+        guard let cards = viewModel?.getCards() else {
+            debugPrint("Error, no cards.")
+            return
+        }
+        assert(cards.count >= 18)
+
+        let xInterval = cardsBoard.bounds.width / 8
+        let yInterval = cardsBoard.bounds.width / 5
+
+        var nextX = xInterval
+        var nextY = yInterval
+
+        var index = 0
+        for _ in 0..<6 {
+            for _ in 0..<3 {
+                let card = cards[index]
+                card.frame.origin.x = nextX
+                card.frame.origin.y = nextY
+                cardsBoard.addSubview(card)
+                nextX += xInterval
+
+                index += 1
+            }
+            nextX = xInterval
+            nextY += yInterval
+        }
+
+    }
+
     private func addQuitButton() {
         quit.backgroundColor = UIColor.black
         quit.setTitle(NSLocalizedString("Quit", comment: "Quit button"), for: .normal)

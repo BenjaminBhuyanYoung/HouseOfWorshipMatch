@@ -3,5 +3,5 @@
 import Foundation
 
 protocol BoardViewModelProtocol {
-    
+    func getCards() -> [Card]
 }
