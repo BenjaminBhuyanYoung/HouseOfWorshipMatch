@@ -17,7 +17,7 @@ public enum Location: String {
     israel = "Haifa__Israel",
     panama = "Panama_City__Panama",
     samoa = "Apia__Samoa",
-    turkmenistan = "Ashkabad__Turmenistan",
+    turkmenistan = "Ashkabad__Turkmenistan",
     uganda = "Kampala__Uganda",
     usa = "Wilmette__USA"
 
@@ -72,7 +72,7 @@ private var CardFact: [Location: [String]] = [
 
 class Card: UIView {
     let location: Location
-    private let front: UIImageView
+    private let front: UIView
     private let back: UIImageView
 
     private var faceUp = true
@@ -86,32 +86,32 @@ class Card: UIView {
 
     init(location: Location, type: CardType, cardBack: CardBack, size: CardSize) {
         self.location = location
-        let frontImage = UIImage(named: location.rawValue)
-        let backImage = UIImage(named: cardBack.rawValue)
-        
-        self.front = UIImageView(image: frontImage)
-        self.back = UIImageView(image: backImage)
+        let cardFrame = Card.calculateFrame(for: size)
+
+        switch type {
+        case .image:
+            let image = UIImage(named: location.rawValue)
+            front = UIImageView(image: image)
+        case .text:
+            front = UIView(frame: cardFrame)
+            front.backgroundColor = UIColor.white
+            let text = Card.locationLabel(for: location)
+            text.adjustsFontSizeToFitWidth = true
+            front.addSubview(text)
+        }
+        self.back = UIImageView(image: UIImage(named: cardBack.rawValue))
+
+        super.init(frame: cardFrame)
 
         front.contentMode = .scaleAspectFit
         back.contentMode = .scaleAspectFit
 
-        var cardFrame: CGRect
-        switch size {
-        case .small:
-            cardFrame = CGRect(x: 0, y: 0, width: 2, height: 3)
-        case .medium:
-            cardFrame = CGRect(x: 0, y: 0, width: 16, height: 24)
-        case .large:
-            cardFrame = CGRect(x: 0, y: 0, width: 30, height: 45)
+
+        for view in [self, front, back] {
+            view.frame = cardFrame
+            view.frame.origin.x = cardFrame.width / 2
+            view.frame.origin.y = cardFrame.height / 2
         }
-
-        super.init(frame: cardFrame)
-
-        translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: cardFrame.width),
-            heightAnchor.constraint(equalToConstant: cardFrame.height)
-            ])
 
         addSubview(front)
 
@@ -119,11 +119,42 @@ class Card: UIView {
         addGestureRecognizer(gesture)
     }
 
+    static private func calculateFrame(for size: CardSize) -> CGRect {
+        let screenHeight = UIScreen.main.bounds.height
+        let safeInsets = UIApplication.shared.keyWindow?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        // UIApplication.shared.keyWindow?.safeAreaInsets is zero -- is that right
+        // not sure if I should us left/right or top/bottom in this orientation
+        let usableHeight = screenHeight - safeInsets.left - safeInsets.right
+        let cardHeight = usableHeight / 5
+
+        switch size {
+        case .small:
+            return CGRect(x: 0, y: 0, width: cardHeight * 0.75, height: cardHeight)
+        case .medium:
+            return CGRect(x: 0, y: 0, width: 16, height: 24) // TODO
+        case .large:
+            return CGRect(x: 0, y: 0, width: 30, height: 45)
+        }
+
+    }
+
+    static private func locationLabel(for location: Location) -> UILabel {
+        let label = UILabel()
+        let halves = location.rawValue.components(separatedBy: "__")
+        assert(halves.count == 2)
+        let city = halves[0].replacingOccurrences(of: "_", with: " ")
+        let country = halves[1].replacingOccurrences(of: "_", with: " ")
+
+        label.text = "\(city)\n\(country)"
+
+        return label
+    }
+
     private func flip() {
         let toView = faceUp ? back : front
         let fromView = faceUp ? front : back
-        UIView.transition(from: fromView, to: toView, duration: 0.7, options: .transitionFlipFromRight, completion: nil)
-        toView.translatesAutoresizingMaskIntoConstraints = false
+        UIView.transition(from: fromView, to: toView, duration: 0.7, options: .transitionFlipFromLeft, completion: nil)
+
         faceUp = !faceUp
     }
 

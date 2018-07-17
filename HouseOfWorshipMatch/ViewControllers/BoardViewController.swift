@@ -61,6 +61,9 @@ class BoardViewController: UIViewController {
             cardsBoard.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10.0),
             cardsBoard.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
+
+        // layout the cards board so the frame gets set -- needed when cards are added.
+        cardsBoard.layoutIfNeeded()
     }
 
     private func addCards() {
@@ -70,25 +73,19 @@ class BoardViewController: UIViewController {
         }
         assert(cards.count >= 18)
 
-        let xInterval = cardsBoard.bounds.width / 8
-        let yInterval = cardsBoard.bounds.width / 5
-
-        var nextX = xInterval
-        var nextY = yInterval
+        let xInterval = cardsBoard.bounds.width / 7
+        let yInterval = cardsBoard.bounds.width / 4
 
         var index = 0
-        for _ in 0..<6 {
-            for _ in 0..<3 {
+        for xCount in 0..<6 {
+            for yCount in 0..<3 {
                 let card = cards[index]
-                card.frame.origin.x = nextX
-                card.frame.origin.y = nextY
+                card.frame.origin.x = xInterval * CGFloat(xCount)
+                card.frame.origin.y = yInterval * CGFloat(yCount)
                 cardsBoard.addSubview(card)
-                nextX += xInterval
 
                 index += 1
             }
-            nextX = xInterval
-            nextY += yInterval
         }
 
     }
