@@ -95,9 +95,8 @@ class Card: UIView {
         case .text:
             front = UIView(frame: cardFrame)
             front.backgroundColor = UIColor.white
-            let text = Card.locationLabel(for: location)
-            text.adjustsFontSizeToFitWidth = true
-            front.addSubview(text)
+
+            Card.addLocationLabels(for: location, to: front)
         }
         self.back = UIImageView(image: UIImage(named: cardBack.rawValue))
 
@@ -135,19 +134,38 @@ class Card: UIView {
         case .large:
             return CGRect(x: 0, y: 0, width: 30, height: 45)
         }
-
     }
 
-    static private func locationLabel(for location: Location) -> UILabel {
-        let label = UILabel()
+    static private func addLocationLabels(for location: Location, to view:UIView) {
+        let cityLabel = UILabel()
+        let countryLabel = UILabel()
         let halves = location.rawValue.components(separatedBy: "__")
         assert(halves.count == 2)
         let city = halves[0].replacingOccurrences(of: "_", with: " ")
         let country = halves[1].replacingOccurrences(of: "_", with: " ")
 
-        label.text = "\(city)\n\(country)"
+        for label in [cityLabel, countryLabel] {
+            label.numberOfLines = -1
+            label.adjustsFontForContentSizeCategory = true
+            label.textAlignment = .center
+            label.minimumScaleFactor = 0.1
+            label.adjustsFontSizeToFitWidth = true
+            label.font = UIFont.systemFont(ofSize: 12)
+            label.translatesAutoresizingMaskIntoConstraints = false
+        }
 
-        return label
+        cityLabel.text = city
+        countryLabel.text = country
+
+        view.addSubview(cityLabel)
+        view.addSubview(countryLabel)
+
+        NSLayoutConstraint.activate([
+            cityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cityLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height / 6),
+            countryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            countryLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: view.frame.height / 6)
+            ])
     }
 
     private func flip() {
