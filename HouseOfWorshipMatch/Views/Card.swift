@@ -13,9 +13,9 @@ public enum CardBack: String {
 public enum Location: String {
     case australia = "Sydney__Australia",
     germany = "Frankfurt__Germany",
-    india = "New_Delhi__India",
+    india = "New Delhi__India",
     israel = "Haifa__Israel",
-    panama = "Panama_City__Panama",
+    panama = "Panama City__Panama",
     samoa = "Apia__Samoa",
     turkmenistan = "Ashkabad__Turkmenistan",
     uganda = "Kampala__Uganda",
@@ -137,34 +137,61 @@ class Card: UIView {
     }
 
     static private func addLocationLabels(for location: Location, to view:UIView) {
+        let widthPercent:CGFloat = 0.9
         let cityLabel = UILabel()
+        var cityLabel2: UILabel?
         let countryLabel = UILabel()
+
         let halves = location.rawValue.components(separatedBy: "__")
         assert(halves.count == 2)
-        let city = halves[0].replacingOccurrences(of: "_", with: " ")
-        let country = halves[1].replacingOccurrences(of: "_", with: " ")
+        let city = halves[0] + ","
+        let country = halves[1]
 
-        for label in [cityLabel, countryLabel] {
-            label.numberOfLines = -1
+        var labels = [cityLabel, countryLabel]
+        if city.contains(" ") {
+            cityLabel2 = UILabel()
+            labels.append(cityLabel2!)
+
+            let cityHalves = city.split(separator: " ", maxSplits: 1, omittingEmptySubsequences: true)
+            cityLabel.text = String(cityHalves[0])
+            cityLabel2?.text = String(cityHalves[1])
+        } else {
+            cityLabel.text = city
+        }
+
+        countryLabel.text = country
+
+        for label in labels {
+            label.numberOfLines = 1
             label.adjustsFontForContentSizeCategory = true
             label.textAlignment = .center
             label.minimumScaleFactor = 0.1
+            label.lineBreakMode = .byWordWrapping
             label.adjustsFontSizeToFitWidth = true
             label.font = UIFont.systemFont(ofSize: 12)
             label.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        cityLabel.text = city
-        countryLabel.text = country
+        // todo: figure out spacing for 2 or 3 labels
 
         view.addSubview(cityLabel)
+        if let city2 = cityLabel2 {
+            view.addSubview(city2)
+            NSLayoutConstraint.activate([
+                city2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                city2.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                city2.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: widthPercent),
+                ])
+        }
         view.addSubview(countryLabel)
 
         NSLayoutConstraint.activate([
             cityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             cityLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height / 6),
+            cityLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: widthPercent),
             countryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            countryLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: view.frame.height / 6)
+            countryLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: view.frame.height / 6),
+            countryLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: widthPercent)
             ])
     }
 
