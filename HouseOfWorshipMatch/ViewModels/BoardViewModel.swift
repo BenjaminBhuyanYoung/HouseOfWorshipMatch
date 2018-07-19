@@ -10,7 +10,8 @@ public enum Level: Int {
 
 class BoardViewModel {
 
-    private var cards = [Card]()
+    private var allCards = [Card]()
+    private var selectedCards = [Card]()
 
     public init(for level: Level) {
 
@@ -24,7 +25,7 @@ class BoardViewModel {
     }
 
     private func createCards(faceUp: Bool) {
-        assert(cards.count == 0)
+        assert(allCards.count == 0)
 
         for location in Location.all {
             let pictureCard = Card(location: location, type: .image, cardBack: .star, size: .small)
@@ -32,27 +33,57 @@ class BoardViewModel {
             pictureCard.delegate = self
             textCard.delegate = self
 
-            cards.append(pictureCard)
-            cards.append(textCard)
+            allCards.append(pictureCard)
+            allCards.append(textCard)
         }
     }
 
     private func shuffleCards() {
         //        cards.shuffle()   TODO: Swift 4.2
-        let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: cards)
-        cards = shuffled as! [Card]
+        let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: allCards)
+        allCards = shuffled as! [Card]
     }
 
 }
 
 extension BoardViewModel: BoardViewModelProtocol {
     public func getCards() -> [Card] {
-        return cards
+        return allCards
     }
 }
 
 extension BoardViewModel: CardHandlerProtocol {
-    func cardTapped(card: Card) {
+    private func addSelected(card: Card) {
+        if !selectedCards.contains(card) {
+            selectedCards.append(card)
+        }
+    }
+
+    private func removeSelected(card: Card) {
+        if let index = selectedCards.index(of: card) {
+            selectedCards.remove(at: index)
+        }
+    }
+
+    private func checkMatch() -> Bool {
+        if selectedCards.count == 2 && selectedCards[0].location == selectedCards[1].location {
+            debugPrint("Match!")
+            return true
+        } else {
+            debugPrint("No match")
+            return false
+        }
+
+    }
+
+    public func cardTapped(card: Card) {
         debugPrint("Card \(card.location) clicked.")
+
+        if card.faceUp {
+            addSelected(card: card)
+            _ = checkMatch()
+        } else {
+            removeSelected(card: card)
+        }
     }
 }

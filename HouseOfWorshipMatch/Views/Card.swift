@@ -75,9 +75,8 @@ class Card: UIView {
     private let front: UIView
     private let back: UIImageView
 
-    private var faceUp = true
     private var factCounter = 0
-
+    public var faceUp = true
     public var delegate: CardHandlerProtocol?
 
     required init?(coder aDecoder: NSCoder) {
@@ -104,7 +103,6 @@ class Card: UIView {
 
         front.contentMode = .scaleAspectFit
         back.contentMode = .scaleAspectFit
-
 
         for view in [self, front, back] {
             view.frame = cardFrame
@@ -196,11 +194,12 @@ class Card: UIView {
     }
 
     private func flip() {
-        let toView = faceUp ? back : front
-        let fromView = faceUp ? front : back
-        UIView.transition(from: fromView, to: toView, duration: 0.7, options: .transitionFlipFromLeft, completion: nil)
-
         faceUp = !faceUp
+
+        let fromView = faceUp ? back : front
+        let toView = faceUp ? front : back
+
+        UIView.transition(from: fromView, to: toView, duration: 0.7, options: .transitionFlipFromLeft, completion: nil)
     }
 
     @objc func tap(_ sender: UIGestureRecognizer?) {

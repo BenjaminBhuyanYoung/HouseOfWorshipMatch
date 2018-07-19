@@ -36,4 +36,15 @@ class CardTests: XCTestCase {
         XCTAssertEqual(fact1AgainLast9Characters, " [1 of 2]")
     }
 
+    func testCardFaceTogglesWhenFlipping() {
+        let card = Card(location: .india, type: .image, cardBack: .leaves, size: .small)
+
+        XCTAssertTrue(card.faceUp)
+
+        card.tap(nil)
+        XCTAssertFalse(card.faceUp)
+
+        card.tap(nil)
+        XCTAssertTrue(card.faceUp)
+    }
 }
