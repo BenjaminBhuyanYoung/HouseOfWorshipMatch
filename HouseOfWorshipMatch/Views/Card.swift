@@ -102,8 +102,6 @@ class Card: UIView {
 
         for view in [self, front, back] {
             view.frame = cardFrame
-            view.frame.origin.x = cardFrame.width / 2
-            view.frame.origin.y = cardFrame.height / 2
         }
 
         addSubview(front)
@@ -116,8 +114,7 @@ class Card: UIView {
         let screenHeight = UIScreen.main.bounds.height
         let safeInsets = UIApplication.shared.keyWindow?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         // UIApplication.shared.keyWindow?.safeAreaInsets is zero -- is that right
-        // not sure if I should us left/right or top/bottom in this orientation
-        let usableHeight = screenHeight - safeInsets.left - safeInsets.right
+        let usableHeight = screenHeight - safeInsets.top - safeInsets.bottom
         let cardHeight = usableHeight / 5
 
         switch size {
@@ -220,4 +217,3 @@ class Card: UIView {
         return fact
     }
 }
-

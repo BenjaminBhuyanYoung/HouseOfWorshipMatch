@@ -39,9 +39,7 @@ class BoardViewModel {
     }
 
     private func shuffleCards() {
-        //        cards.shuffle()   TODO: Swift 4.2
-        let shuffled = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: allCards)
-        allCards = shuffled as! [Card]
+        allCards = allCards.shuffled()
     }
 
 }
@@ -73,7 +71,6 @@ extension BoardViewModel: CardHandlerProtocol {
             debugPrint("No match")
             return false
         }
-
     }
 
     public func cardTapped(card: Card) {

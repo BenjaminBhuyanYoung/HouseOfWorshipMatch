@@ -56,7 +56,7 @@ class BoardViewController: UIViewController {
             ])
 
         NSLayoutConstraint.activate([
-            cardsBoard.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.70),
+            cardsBoard.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.60),
             cardsBoard.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.9),
             cardsBoard.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10.0),
             cardsBoard.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -73,21 +73,23 @@ class BoardViewController: UIViewController {
         }
         assert(cards.count >= 18)
 
-        let xInterval = cardsBoard.bounds.width / 7
-        let yInterval = cardsBoard.bounds.width / 4
+        let xInterval = cardsBoard.bounds.width / 6
+        let yInterval = cardsBoard.bounds.height / 3
+
+        let halfCardWidth = cards[0].frame.width / 4
+        let halfCardHeight = cards[0].frame.height / 4
 
         var index = 0
         for xCount in 0..<6 {
             for yCount in 0..<3 {
                 let card = cards[index]
-                card.frame.origin.x = xInterval * CGFloat(xCount)
-                card.frame.origin.y = yInterval * CGFloat(yCount)
+                card.frame.origin.x = xInterval * CGFloat(xCount) + halfCardWidth
+                card.frame.origin.y = yInterval * CGFloat(yCount) + halfCardHeight
                 cardsBoard.addSubview(card)
 
                 index += 1
             }
         }
-
     }
 
     private func addQuitButton() {
@@ -102,8 +104,8 @@ class BoardViewController: UIViewController {
         quit.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             quit.widthAnchor.constraint(equalToConstant: 80),
-            quit.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10),
-            quit.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            quit.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -3),
+            quit.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -3)
             ])
         
         quit.addTarget(self, action: #selector(tappedQuit(_:)), for: .touchUpInside)
