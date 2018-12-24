@@ -27,7 +27,7 @@ class BoardViewModel {
     private func createCards(faceUp: Bool) {
         assert(allCards.count == 0)
 
-        for location in Location.all {
+        for location in Location.allCases {
             let pictureCard = Card(location: location, type: .image, cardBack: .star, size: .small)
             let textCard = Card(location: location, type: .text, cardBack: .star, size: .small)
             pictureCard.delegate = self

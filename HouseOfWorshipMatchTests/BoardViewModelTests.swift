@@ -21,7 +21,7 @@ class BoardViewModelTests: XCTestCase {
     func testCreateCardsMakesAllCardsWithDelegates() {
         let target = BoardViewModel(for: .normal)
 
-        let expectedCardCount = Location.all.count * 2
+        let expectedCardCount = Location.allCases.count * 2
 
         XCTAssertEqual(target.getCards().count, expectedCardCount)
 

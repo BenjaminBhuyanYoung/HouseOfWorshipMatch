@@ -10,7 +10,7 @@ public enum CardBack: String {
     maple = "leaves_maples"
 }
 
-public enum Location: String {
+public enum Location: String, CaseIterable {
     case australia = "Sydney__Australia",
     germany = "Frankfurt__Germany",
     india = "New Delhi__India",
@@ -20,10 +20,6 @@ public enum Location: String {
     turkmenistan = "Ashkabad__Turkmenistan",
     uganda = "Kampala__Uganda",
     usa = "Wilmette__USA"
-
-    static var all:[Location] {
-        return [.australia, .germany, .india, .israel, .panama, .samoa, .turkmenistan, .uganda, .usa]
-    }
 }
 
 public enum CardType: Int {
