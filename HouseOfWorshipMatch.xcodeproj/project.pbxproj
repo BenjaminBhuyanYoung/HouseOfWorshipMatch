@@ -238,13 +238,16 @@
 				TargetAttributes = {
 					35FBECC420F42BCC001C109D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 					35FBECD820F42BCE001C109D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = 35FBECC420F42BCC001C109D;
 					};
 					35FBECE320F42BCE001C109D = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = 35FBECC420F42BCC001C109D;
 					};
 				};
@@ -497,7 +500,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -515,7 +518,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -534,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HouseOfWorshipMatch.app/HouseOfWorshipMatch";
 			};
@@ -554,7 +557,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HouseOfWorshipMatch.app/HouseOfWorshipMatch";
 			};
@@ -573,7 +576,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HouseOfWorshipMatch;
 			};
@@ -592,7 +595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HouseOfWorshipMatch;
 			};
