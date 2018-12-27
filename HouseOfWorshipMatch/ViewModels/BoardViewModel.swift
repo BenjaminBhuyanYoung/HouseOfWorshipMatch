@@ -12,8 +12,10 @@ class BoardViewModel {
 
     private var allCards = [Card]()
     private var selectedCards = [Card]()
+    private let level: Level
 
     public init(for level: Level) {
+        self.level = level
 
         switch level {
         case .tutorial:
@@ -33,6 +35,9 @@ class BoardViewModel {
             pictureCard.delegate = self
             textCard.delegate = self
 
+            pictureCard.faceUp = faceUp
+            textCard.faceUp = faceUp
+
             allCards.append(pictureCard)
             allCards.append(textCard)
         }
@@ -42,27 +47,21 @@ class BoardViewModel {
         allCards = allCards.shuffled()
     }
 
-}
-
-extension BoardViewModel: BoardViewModelProtocol {
-    public func getCards() -> [Card] {
-        return allCards
-    }
-}
-
-extension BoardViewModel: CardHandlerProtocol {
     private func addSelected(card: Card) {
         if !selectedCards.contains(card) {
             selectedCards.append(card)
+            card.activate(on: true)
         }
     }
 
     private func removeSelected(card: Card) {
         if let index = selectedCards.index(of: card) {
             selectedCards.remove(at: index)
+            card.activate(on: false)
         }
     }
 
+    @discardableResult
     private func checkMatch() -> Bool {
         if selectedCards.count == 2 && selectedCards[0].location == selectedCards[1].location {
             debugPrint("Match!")
@@ -72,15 +71,19 @@ extension BoardViewModel: CardHandlerProtocol {
             return false
         }
     }
+}
 
+extension BoardViewModel: BoardViewModelProtocol {
+    public func getCards() -> [Card] {
+        return allCards
+    }
+}
+
+extension BoardViewModel: CardHandlerProtocol {
     public func cardTapped(card: Card) {
         debugPrint("Card \(card.location) clicked.")
 
-        if card.faceUp {
-            addSelected(card: card)
-            _ = checkMatch()
-        } else {
-            removeSelected(card: card)
-        }
+        addSelected(card: card)
+        checkMatch()
     }
 }

@@ -18,6 +18,7 @@ DerivedData/
 xcuserdata/
 *.UserInterfaceState.xcuserstate
 *.DS_Store
+HouseOfWorshipMatch.xcodeproj/xcuserdata/
 
 ## Other
 *.moved-aside

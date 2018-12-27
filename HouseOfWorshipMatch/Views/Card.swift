@@ -93,7 +93,7 @@ class Card: UIView {
 
             Card.addLocationLabels(for: location, to: front)
         }
-        self.back = UIImageView(image: UIImage(named: cardBack.rawValue))
+        back = UIImageView(image: UIImage(named: cardBack.rawValue))
 
         super.init(frame: cardFrame)
 
@@ -105,6 +105,8 @@ class Card: UIView {
         }
 
         addSubview(front)
+
+        setupGlow()
 
         let gesture = UITapGestureRecognizer(target: self, action: #selector (tap(_:)))
         addGestureRecognizer(gesture)
@@ -186,6 +188,19 @@ class Card: UIView {
             ])
     }
 
+    private func setupGlow() {
+//        layer.borderWidth = 2.0
+//        layer.backgroundColor = UIColor.clear.cgColor
+//        layer.borderColor = UIColor(named: "GlowColor")?.cgColor
+//        layer.cornerRadius = 8.0
+//        layer.masksToBounds = true
+//        layer.shadowOffset = CGSize(width: 2, height: 2)
+//        layer.shadowColor = UIColor(named: "GlowColor")?.cgColor
+//        layer.shadowOpacity = 0.0
+//        layer.shadowRadius = 3.0
+//        layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
+    }
+
     private func flip() {
         faceUp = !faceUp
 
@@ -198,6 +213,19 @@ class Card: UIView {
     @objc func tap(_ sender: UIGestureRecognizer?) {
         flip()
         delegate?.cardTapped(card: self)
+    }
+
+    public func activate(on: Bool, animated: Bool = true) {
+//        let opacity:Float = on ? 1.0 : 0.0
+//
+//        if animated {
+//            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+//            animation.fromValue = layer.shadowOpacity
+//            animation.toValue = opacity
+//            animation.duration = 1.75
+//            layer.add(animation, forKey: animation.keyPath)
+//        }
+//        layer.shadowOpacity = opacity
     }
 
     public func getFact() -> String {
