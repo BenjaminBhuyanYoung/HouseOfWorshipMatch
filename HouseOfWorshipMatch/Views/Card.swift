@@ -194,14 +194,16 @@ class Card: UIView {
 //        layer.borderColor = UIColor(named: "GlowColor")?.cgColor
 //        layer.cornerRadius = 8.0
 //        layer.masksToBounds = true
-//        layer.shadowOffset = CGSize(width: 2, height: 2)
-//        layer.shadowColor = UIColor(named: "GlowColor")?.cgColor
-//        layer.shadowOpacity = 0.0
-//        layer.shadowRadius = 3.0
-//        layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
+        layer.shadowOffset = CGSize(width: 2, height: 2)
+        layer.shadowColor = UIColor(named: "ColorGlow")?.cgColor
+        layer.shadowOpacity = 0.0
+        layer.shadowRadius = 3.0
+        layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
+//        layer.shadowPath = CGPath(roundedRect: self.bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
+
     }
 
-    private func flip() {
+    public func flip() {
         faceUp = !faceUp
 
         let fromView = faceUp ? back : front
@@ -211,20 +213,26 @@ class Card: UIView {
     }
 
     @objc func tap(_ sender: UIGestureRecognizer?) {
-        flip()
         delegate?.cardTapped(card: self)
     }
 
-    public func activate(on: Bool, animated: Bool = true) {
-//        let opacity:Float = on ? 1.0 : 0.0
-//
-//        if animated {
-//            let animation = CABasicAnimation(keyPath: "shadowOpacity")
-//            animation.fromValue = layer.shadowOpacity
-//            animation.toValue = opacity
-//            animation.duration = 1.75
-//            layer.add(animation, forKey: animation.keyPath)
-//        }
+    public func glow(on: Bool, animated: Bool = true) {
+        let opacity:Float = on ? 0.8 : 0.0
+
+        if animated {
+            CATransaction.begin()
+            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+            animation.fromValue = layer.shadowOpacity
+            animation.toValue = opacity
+            animation.duration = 0.75
+            animation.isAdditive = false
+            animation.fillMode = CAMediaTimingFillMode.both
+            animation.isRemovedOnCompletion = false
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+
+            layer.add(animation, forKey: animation.keyPath)
+            CATransaction.commit()
+        }
 //        layer.shadowOpacity = opacity
     }
 

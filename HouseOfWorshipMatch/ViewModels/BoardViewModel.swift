@@ -47,18 +47,21 @@ class BoardViewModel {
         allCards = allCards.shuffled()
     }
 
-    private func addSelected(card: Card) {
-        if !selectedCards.contains(card) {
-            selectedCards.append(card)
-            card.activate(on: true)
-        }
-    }
-
-    private func removeSelected(card: Card) {
+    private func toggleSelected(card: Card) {
+        var activate = true
         if let index = selectedCards.index(of: card) {
             selectedCards.remove(at: index)
-            card.activate(on: false)
+            activate = false
         }
+        else {
+            selectedCards.append(card)
+        }
+
+        if level != .tutorial {
+            card.flip()
+        }
+        
+        card.glow(on: activate)
     }
 
     @discardableResult
@@ -67,7 +70,9 @@ class BoardViewModel {
             debugPrint("Match!")
             return true
         } else {
-            debugPrint("No match")
+            if selectedCards.count == 2 {
+                debugPrint("No match")
+            }
             return false
         }
     }
@@ -83,7 +88,7 @@ extension BoardViewModel: CardHandlerProtocol {
     public func cardTapped(card: Card) {
         debugPrint("Card \(card.location) clicked.")
 
-        addSelected(card: card)
+        toggleSelected(card: card)
         checkMatch()
     }
 }
