@@ -106,6 +106,7 @@ class Card: UIView {
 
         addSubview(front)
 
+        setupBorders()
         setupGlow()
 
         let gesture = UITapGestureRecognizer(target: self, action: #selector (tap(_:)))
@@ -188,19 +189,44 @@ class Card: UIView {
             ])
     }
 
-    private func setupGlow() {
-//        layer.borderWidth = 2.0
-//        layer.backgroundColor = UIColor.clear.cgColor
-//        layer.borderColor = UIColor(named: "GlowColor")?.cgColor
-//        layer.cornerRadius = 8.0
-//        layer.masksToBounds = true
-        layer.shadowOffset = CGSize(width: 2, height: 2)
-        layer.shadowColor = UIColor(named: "ColorGlow")?.cgColor
-        layer.shadowOpacity = 0.0
-        layer.shadowRadius = 3.0
-        layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
-//        layer.shadowPath = CGPath(roundedRect: self.bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius, transform: nil)
+    private func setupBorders() {
+        for border in [front.layer, back.layer] {
+            border.borderWidth = 2.0
+            border.borderColor = UIColor.black.cgColor
+            border.cornerRadius = 8.0
+            border.masksToBounds = true
+        }
 
+        layer.backgroundColor = UIColor.clear.cgColor
+    }
+
+    private func setupGlow() {
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowColor = UIColor(named: "ColorGlow")?.cgColor
+        assert(layer.shadowColor != nil, "couldn't find color for glow")
+        layer.shadowOpacity = 0.0
+        layer.shadowRadius = 5.0
+        layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
+    }
+
+    public func glow(on: Bool, animated: Bool = true) {
+        let opacity:Float = on ? 0.9 : 0.0
+
+        if animated {
+            CATransaction.begin()
+            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+            animation.fromValue = layer.shadowOpacity
+            animation.toValue = opacity
+            animation.duration = 0.3
+            animation.isAdditive = false
+            animation.fillMode = CAMediaTimingFillMode.both
+            animation.isRemovedOnCompletion = false
+            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+
+            layer.add(animation, forKey: animation.keyPath)
+            CATransaction.commit()
+        }
+        //        layer.shadowOpacity = opacity
     }
 
     public func flip() {
@@ -214,26 +240,6 @@ class Card: UIView {
 
     @objc func tap(_ sender: UIGestureRecognizer?) {
         delegate?.cardTapped(card: self)
-    }
-
-    public func glow(on: Bool, animated: Bool = true) {
-        let opacity:Float = on ? 0.8 : 0.0
-
-        if animated {
-            CATransaction.begin()
-            let animation = CABasicAnimation(keyPath: "shadowOpacity")
-            animation.fromValue = layer.shadowOpacity
-            animation.toValue = opacity
-            animation.duration = 0.75
-            animation.isAdditive = false
-            animation.fillMode = CAMediaTimingFillMode.both
-            animation.isRemovedOnCompletion = false
-            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-
-            layer.add(animation, forKey: animation.keyPath)
-            CATransaction.commit()
-        }
-//        layer.shadowOpacity = opacity
     }
 
     public func getFact() -> String {

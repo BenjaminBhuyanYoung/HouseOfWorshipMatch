@@ -49,19 +49,20 @@ class BoardViewModel {
 
     private func toggleSelected(card: Card) {
         var activate = true
+
         if let index = selectedCards.index(of: card) {
             selectedCards.remove(at: index)
             activate = false
-        }
-        else {
+        } else {
             selectedCards.append(card)
         }
 
-        if level != .tutorial {
+        switch level {
+        case .tutorial:
+            card.glow(on: activate)
+        default:
             card.flip()
         }
-        
-        card.glow(on: activate)
     }
 
     @discardableResult
@@ -86,7 +87,7 @@ extension BoardViewModel: BoardViewModelProtocol {
 
 extension BoardViewModel: CardHandlerProtocol {
     public func cardTapped(card: Card) {
-        debugPrint("Card \(card.location) clicked.")
+//        debugPrint("Card \(card.location) tapped.")
 
         toggleSelected(card: card)
         checkMatch()
