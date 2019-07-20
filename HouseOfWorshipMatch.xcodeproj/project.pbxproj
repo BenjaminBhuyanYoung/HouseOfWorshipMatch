@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3507BC1F21D73F89002BF2A7 /* CardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3507BC1E21D73F89002BF2A7 /* CardProtocol.swift */; };
+		3507BC2021D76669002BF2A7 /* CardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3507BC1E21D73F89002BF2A7 /* CardProtocol.swift */; };
 		353CC56D20F4BB730006F053 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56C20F4BB730006F053 /* Card.swift */; };
 		353CC56F20F4D0C90006F053 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC56E20F4D0C90006F053 /* BoardViewModel.swift */; };
 		353CC57120F852C60006F053 /* BoardViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */; };
@@ -43,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3507BC1E21D73F89002BF2A7 /* CardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardProtocol.swift; sourceTree = "<group>"; };
 		353CC56C20F4BB730006F053 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		353CC56E20F4D0C90006F053 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		353CC57020F852C60006F053 /* BoardViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				353CC56C20F4BB730006F053 /* Card.swift */,
+				3507BC1E21D73F89002BF2A7 /* CardProtocol.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,16 +242,16 @@
 				TargetAttributes = {
 					35FBECC420F42BCC001C109D = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 					};
 					35FBECD820F42BCE001C109D = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						TestTargetID = 35FBECC420F42BCC001C109D;
 					};
 					35FBECE320F42BCE001C109D = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1020;
 						TestTargetID = 35FBECC420F42BCC001C109D;
 					};
 				};
@@ -304,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35FBECC920F42BCC001C109D /* AppDelegate.swift in Sources */,
+				3507BC1F21D73F89002BF2A7 /* CardProtocol.swift in Sources */,
 				353CC57120F852C60006F053 /* BoardViewModelProtocol.swift in Sources */,
 				35FBECF920F44416001C109D /* MainMenuViewController.swift in Sources */,
 				35FBECFD20F4A299001C109D /* BoardViewController.swift in Sources */,
@@ -321,6 +326,7 @@
 				35FBECDE20F42BCE001C109D /* CardTests.swift in Sources */,
 				353CC57920FB76EB0006F053 /* BoardViewModelProtocol.swift in Sources */,
 				353CC57620FB757A0006F053 /* BoardViewModelTests.swift in Sources */,
+				3507BC2021D76669002BF2A7 /* CardProtocol.swift in Sources */,
 				353CC57720FB76280006F053 /* BoardViewModel.swift in Sources */,
 				353CC57820FB768D0006F053 /* Card.swift in Sources */,
 			);
@@ -500,7 +506,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -518,7 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -537,7 +543,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HouseOfWorshipMatch.app/HouseOfWorshipMatch";
 			};
@@ -557,7 +563,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HouseOfWorshipMatch.app/HouseOfWorshipMatch";
 			};
@@ -576,7 +582,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HouseOfWorshipMatch;
 			};
@@ -595,7 +601,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheRavenGames.HouseOfWorshipMatchUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = HouseOfWorshipMatch;
 			};

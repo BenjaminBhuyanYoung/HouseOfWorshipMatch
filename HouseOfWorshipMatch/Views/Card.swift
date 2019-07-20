@@ -67,7 +67,7 @@ private var CardFact: [Location: [String]] = [
 ]
 
 class Card: UIView {
-    let location: Location
+    public let location: Location
     private let front: UIView
     private let back: UIImageView
 
@@ -208,6 +208,14 @@ class Card: UIView {
         layer.shadowRadius = 5.0
         layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
     }
+    
+    // public just for a test. :/
+    @objc public func tap(_ sender: UIGestureRecognizer?) {
+        delegate?.cardTapped(card: self)
+    }
+}
+
+extension Card: CardProtocol {
 
     public func glow(on: Bool, animated: Bool = true) {
         let opacity:Float = on ? 0.9 : 0.0
@@ -218,15 +226,17 @@ class Card: UIView {
             animation.fromValue = layer.shadowOpacity
             animation.toValue = opacity
             animation.duration = 0.3
-            animation.isAdditive = false
-            animation.fillMode = CAMediaTimingFillMode.both
-            animation.isRemovedOnCompletion = false
             animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+
+            CATransaction.setCompletionBlock { [weak self] in
+                self?.layer.shadowOpacity = opacity
+            }
 
             layer.add(animation, forKey: animation.keyPath)
             CATransaction.commit()
+        } else {
+            layer.shadowOpacity = opacity
         }
-        //        layer.shadowOpacity = opacity
     }
 
     public func flip() {
@@ -236,10 +246,6 @@ class Card: UIView {
         let toView = faceUp ? front : back
 
         UIView.transition(from: fromView, to: toView, duration: 0.7, options: .transitionFlipFromLeft, completion: nil)
-    }
-
-    @objc func tap(_ sender: UIGestureRecognizer?) {
-        delegate?.cardTapped(card: self)
     }
 
     public func getFact() -> String {

@@ -41,10 +41,16 @@ class CardTests: XCTestCase {
 
         XCTAssertTrue(card.faceUp)
 
-        card.tap(nil)
+        card.flip()
         XCTAssertFalse(card.faceUp)
 
-        card.tap(nil)
+        card.flip()
         XCTAssertTrue(card.faceUp)
+    }
+
+    func testCardGlows() {
+        let card = Card(location: .samoa, type: .image, cardBack: .leaves, size: .small)
+
+        XCTAssertEqual(card.layer.shadowOpacity, Float(0.0))
     }
 }

@@ -50,7 +50,7 @@ class BoardViewModel {
     private func toggleSelected(card: Card) {
         var activate = true
 
-        if let index = selectedCards.index(of: card) {
+        if let index = selectedCards.firstIndex(where: {$0 == card}) {
             selectedCards.remove(at: index)
             activate = false
         } else {
@@ -59,7 +59,7 @@ class BoardViewModel {
 
         switch level {
         case .tutorial:
-            card.glow(on: activate)
+            card.glow(on: activate, animated: true)
         default:
             card.flip()
         }
