@@ -51,6 +51,16 @@ class CardTests: XCTestCase {
     func testCardGlows() {
         let card = Card(location: .samoa, type: .image, cardBack: .leaves, size: .small)
 
+        let tapped: ()->() = {
+            card.glow(on: true, animated: false)
+        }
+        card.delegate = FakeCardHandler(cardTappedFunction: tapped)
+
         XCTAssertEqual(card.layer.shadowOpacity, Float(0.0))
+
+        card.tap(nil)
+
+        XCTAssertEqual(card.layer.shadowOpacity, Card.glowOpacity)
     }
 }
+

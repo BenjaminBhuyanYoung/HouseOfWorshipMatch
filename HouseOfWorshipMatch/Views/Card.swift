@@ -48,7 +48,8 @@ private var CardFact: [Location: [String]] = [
         "The Temple Land where the Obelisk stands is about a mile (1.5 km) away from the Shrine of the Bab."],
     .panama: [
         "The Mother Temple of Latin America was completed in 1972 (although a House of Worship has since been built in Chile).",
-        "The dome of this House of Worship is covered with thousands of small oval tiles.  The stonework is based upon Native American fabric designs."],
+        "The dome of this House of Worship is covered with thousands of small oval tiles, each one unique.",
+        "The stonework on this House of Worship is based upon Native American fabric designs."],
     .samoa: [
         "Dedicated in 1984 as the Mother Temple of the Pacific Islands.  The roof is based on a traditional Samoan house called a fale.",
         "The foundation stone was laid by Hand of the Cause Ruhiyyih Rabbani & His Highness Susuga Malietoa Tanumafili II, the first Bahá’í Head of State of a country."],
@@ -67,6 +68,8 @@ private var CardFact: [Location: [String]] = [
 ]
 
 class Card: UIView {
+    static let glowOpacity: Float = 0.9
+
     public let location: Location
     private let front: UIView
     private let back: UIImageView
@@ -218,7 +221,7 @@ class Card: UIView {
 extension Card: CardProtocol {
 
     public func glow(on: Bool, animated: Bool = true) {
-        let opacity:Float = on ? 0.9 : 0.0
+        let opacity:Float = on ? Card.glowOpacity : 0.0
 
         if animated {
             CATransaction.begin()

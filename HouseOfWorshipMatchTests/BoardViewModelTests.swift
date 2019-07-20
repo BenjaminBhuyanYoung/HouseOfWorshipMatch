@@ -2,20 +2,6 @@
 
 import XCTest
 
-class FakeCardHandler: CardHandlerProtocol {
-    public var cardTappedFunction: ()->() = {}
-
-    public init(cardTappedFunction: (()->())? = nil) {
-        if let function = cardTappedFunction {
-            self.cardTappedFunction = function
-        }
-    }
-
-    func cardTapped(card: Card) {
-        cardTappedFunction()
-    }
-}
-
 class BoardViewModelTests: XCTestCase {
     
     func testCreateCardsMakesAllCardsWithDelegates() {
