@@ -20,6 +20,34 @@ public enum Location: String, CaseIterable {
     turkmenistan = "Ashkabad__Turkmenistan",
     uganda = "Kampala__Uganda",
     usa = "Wilmette__USA"
+
+    func city() -> String {
+        switch self {
+        case .australia: return "Sydney"
+        case .germany: return "Frankfurt"
+        case .india: return "New Delhi"
+        case .israel: return "Haifa"
+        case .panama: return "Panama City"
+        case .samoa: return "Apia"
+        case .turkmenistan: return "Ashkabad"
+        case .uganda: return "Kampala"
+        case .usa: return "Wilmette"
+        }
+    }
+
+    func country() -> String {
+        switch self {
+        case .australia: return "Australia"
+        case .germany: return "Germany"
+        case .india: return "India"
+        case .israel: return "Israel"
+        case .panama: return "Panama"
+        case .samoa: return "Samoa"
+        case .turkmenistan: return "Turkmenistan"
+        case .uganda: return "Uganda"
+        case .usa: return "USA"
+        }
+    }
 }
 
 public enum CardType: Int {
@@ -139,10 +167,8 @@ class Card: UIView {
         var cityLabel2: UILabel?
         let countryLabel = UILabel()
 
-        let halves = location.rawValue.components(separatedBy: "__")
-        assert(halves.count == 2)
-        let city = halves[0] + ","
-        let country = halves[1]
+        let city = location.city() + ","
+        let country = location.country()
 
         var labels = [cityLabel, countryLabel]
         if city.contains(" ") {
