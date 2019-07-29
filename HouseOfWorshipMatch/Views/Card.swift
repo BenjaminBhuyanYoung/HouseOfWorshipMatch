@@ -48,7 +48,7 @@ private var CardFact: [Location: [String]] = [
         "The Temple Land where the Obelisk stands is about a mile (1.5 km) away from the Shrine of the Bab."],
     .panama: [
         "The Mother Temple of Latin America was completed in 1972 (although a House of Worship has since been built in Chile).",
-        "The dome of this House of Worship is covered with thousands of small oval tiles, each one unique.",
+        "The dome of this House of Worship is covered with thousands of small white patterned tiles from Japan, each one unique.",
         "The stonework on this House of Worship is based upon Native American fabric designs."],
     .samoa: [
         "Dedicated in 1984 as the Mother Temple of the Pacific Islands.  The roof is based on a traditional Samoan house called a fale.",
@@ -211,9 +211,9 @@ class Card: UIView {
         layer.shadowRadius = 5.0
         layer.shadowPath = UIBezierPath(rect: layer.bounds).cgPath
     }
-    
+
     // public just for a test. :/
-    @objc public func tap(_ sender: UIGestureRecognizer?) {
+    @objc public func tap(_ sender: UIGestureRecognizer? = nil) {
         delegate?.cardTapped(card: self)
     }
 }
@@ -267,4 +267,12 @@ extension Card: CardProtocol {
 
         return fact
     }
+
+    public func disappear() {
+        // TODO: cooler hiding animation.  Scale away to nothing, and twirl?
+        // TODO: play sound effect
+        glow(on: false, animated: false)
+        isHidden = true
+    }
+
 }

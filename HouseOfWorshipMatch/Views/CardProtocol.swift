@@ -11,4 +11,5 @@ protocol CardProtocol {
     func glow(on: Bool, animated: Bool)
     func flip()
     func getFact() -> String
+    func disappear()
 }

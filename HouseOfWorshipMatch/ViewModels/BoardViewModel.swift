@@ -47,11 +47,19 @@ class BoardViewModel {
         allCards = allCards.shuffled()
     }
 
+    @discardableResult
+    private func removeSelectedCard(card: Card) -> Bool {
+        if let index = selectedCards.firstIndex(where: {$0 == card}) {
+            selectedCards.remove(at: index)
+            return true
+        }
+        return false
+    }
+
     private func toggleSelected(card: Card) {
         var activate = true
 
-        if let index = selectedCards.firstIndex(where: {$0 == card}) {
-            selectedCards.remove(at: index)
+        if removeSelectedCard(card: card) {
             activate = false
         } else {
             selectedCards.append(card)
@@ -65,16 +73,33 @@ class BoardViewModel {
         }
     }
 
-    @discardableResult
-    private func checkMatch() -> Bool {
-        if selectedCards.count == 2 && selectedCards[0].location == selectedCards[1].location {
+    private func cardsMatch() -> Bool {
+        guard selectedCards.count == 2 else {
+            return false
+        }
+        if selectedCards[0].location == selectedCards[1].location {
             debugPrint("Match!")
             return true
-        } else {
-            if selectedCards.count == 2 {
-                debugPrint("No match")
+        }
+
+        return false
+    }
+
+    // match happened
+    private func hideSelectedCards() {
+        for card in selectedCards {
+            removeSelectedCard(card: card)
+            card.disappear()
+        }
+    }
+
+    // No match
+    private func unselectSelectedCards() {
+        for card in selectedCards {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                // TODO: Stop cards from being selectable
+                self.toggleSelected(card: card)
             }
-            return false
         }
     }
 }
@@ -90,6 +115,14 @@ extension BoardViewModel: CardHandlerProtocol {
 //        debugPrint("Card \(card.location) tapped.")
 
         toggleSelected(card: card)
-        checkMatch()
+
+        if selectedCards.count == 2 {
+            if cardsMatch() {
+                // TODO: create large version of card, or scale up little card
+                hideSelectedCards()
+            } else {
+                unselectSelectedCards()
+            }
+        }
     }
 }
